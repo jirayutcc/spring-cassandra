@@ -1,0 +1,11 @@
+server:
+  port: 7000
+  servlet:
+    context-path: /api/v1
+
+spring:
+  data:
+    cassandra:
+      contactpoints: localhost
+      port: 9042
+      keyspace-name: mycassandrakeyspace
