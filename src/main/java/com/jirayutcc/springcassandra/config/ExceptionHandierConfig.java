@@ -1,5 +1,6 @@
 package com.jirayutcc.springcassandra.config;
 
+import com.jirayutcc.springcassandra.exception.BusinessException;
 import com.jirayutcc.springcassandra.exception.GeneralException;
 import com.jirayutcc.springcassandra.models.ErrorResponse;
 import com.jirayutcc.springcassandra.utils.ErrorMapping;
@@ -19,7 +20,7 @@ public class ExceptionHandierConfig {
         log.error("Exception : ", ex);
         ErrorResponse resp = new ErrorResponse();
         resp.setStatus(ErrorMapping.CODE9999.getCode());
-        resp.setStatus(ErrorMapping.CODE9999.getMessage());
+        resp.setMessage(ErrorMapping.CODE9999.getMessage());
 
         return resp;
     }
@@ -30,7 +31,18 @@ public class ExceptionHandierConfig {
         log.error("GeneralException : ", ex);
         ErrorResponse resp = new ErrorResponse();
         resp.setStatus(ErrorMapping.CODE9999.getCode());
-        resp.setStatus(ErrorMapping.CODE9999.getMessage());
+        resp.setMessage(ErrorMapping.CODE9999.getMessage());
+
+        return resp;
+    }
+
+    @ExceptionHandler(value = {BusinessException.class})
+    @ResponseStatus(HttpStatus.OK)
+    public ErrorResponse businessException(BusinessException ex) {
+        log.error("BusinessException : ", ex);
+        ErrorResponse resp = new ErrorResponse();
+        resp.setStatus(ex.getCode());
+        resp.setMessage(ex.getMessage());
 
         return resp;
     }
