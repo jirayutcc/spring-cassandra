@@ -47,8 +47,8 @@ public class EmployeeService {
             return employee;
         } catch (Exception ex) {
             throw new BusinessException(
-                    ErrorMapping.CODE3000.getCode(),
-                    ErrorMapping.CODE3000.getMessage()
+                    ErrorMapping.CODE1000.getCode(),
+                    ErrorMapping.CODE1000.getMessage()
             );
         }
     }
@@ -62,12 +62,16 @@ public class EmployeeService {
         return Optional.of(employeeRepository.save(employee));
     }
 
-    public boolean delete(UUID id) {
+    @SneakyThrows
+    public void delete(UUID id) {
         try {
             employeeRepository.deleteById(id);
-            return true;
+            log.info("delete employee success");
         } catch (Exception e) {
-            return false;
+            throw new BusinessException(
+                    ErrorMapping.CODE3000.getCode(),
+                    ErrorMapping.CODE3000.getMessage()
+            );
         }
     }
 }

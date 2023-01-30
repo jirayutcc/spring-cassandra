@@ -65,9 +65,7 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable UUID id) {
-        if(!employeeService.delete(id)) {
-            return ResponseEntity.badRequest().build();
-        }
+        employeeService.delete(id);
         return ResponseEntity.ok().build();
     }
 }

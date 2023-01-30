@@ -15,11 +15,15 @@ public class ErrorMapping {
             .message("System error")
             .build();
 
-    public static final ErrorInfo CODE3000 = ErrorInfo.builder()
-            .code("3000")
+    public static final ErrorInfo CODE1000 = ErrorInfo.builder()
+            .code("1000")
             .message("Can't insert employee")
             .build();
 
+    public static final ErrorInfo CODE3000 = ErrorInfo.builder()
+            .code("3000")
+            .message("Can't delete employee")
+            .build();
     @Data
     @Builder
     @AllArgsConstructor
