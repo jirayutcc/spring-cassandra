@@ -1,9 +1,9 @@
 package com.jirayutcc.springcassandra.config;
 
+import com.jirayutcc.springcassandra.constant.ErrorMapping;
 import com.jirayutcc.springcassandra.exception.BusinessException;
 import com.jirayutcc.springcassandra.exception.GeneralException;
 import com.jirayutcc.springcassandra.models.ErrorResponse;
-import com.jirayutcc.springcassandra.utils.ErrorMapping;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

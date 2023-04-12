@@ -4,6 +4,7 @@ import com.jirayutcc.springcassandra.constant.ErrorMapping;
 import com.jirayutcc.springcassandra.exception.BusinessException;
 import com.jirayutcc.springcassandra.models.Employee;
 import com.jirayutcc.springcassandra.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -16,14 +17,10 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-
-    @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
 
     public List<Employee> findAll() {
         return employeeRepository.findAll();
